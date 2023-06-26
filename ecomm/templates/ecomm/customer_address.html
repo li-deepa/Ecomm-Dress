@@ -1,0 +1,44 @@
+{%extends 'home.html'%}
+
+{%block content%}
+<br>
+
+    <div class="row">
+      <div class="card col-12">
+
+    {% for i in cu_address %}
+
+     
+    {% if request.user.customer == i.customer %}
+    <a href="{%url 'create_address'  %}">ADD Address</a>
+
+    <div class="card">
+      <div class="card-body">
+       
+          <p>Name<span class="card" style="padding-left: 20px;"> <a href='{{i.get_absolute_url}}'>{{i.customer.name}}</a></span></p>
+     
+
+     <p>Address<span class="card" style="padding-left: 20px;">{{i.street_address}}</span></p>
+     <p>City<span class="card"style="padding-left: 20px;"> {{i.city}}</span></p>
+     <p>State <span class="card"style="padding-left: 20px;">{{i.state}}</span></p>
+     <p> Zipcode<span class="card"style="padding-left: 20px;">{{i.zipcode}}</span></p>
+     <p>Date_added<span class="card"style="padding-left: 20px;">{{i.date_added}}</span></p>
+  
+      <div class="card-footer">
+       
+      </div>
+    </div>
+    
+
+  </div>
+  <br>
+  <!-- <a href="{%url 'update_address' i.id %}">update Address</a> -->
+  <a href="{%url 'delete_address' i.id %}">delete Address</a>
+
+  {%endif%}
+ {%endfor%}
+  <br>
+</div>
+</div>
+<br>
+{%endblock%}

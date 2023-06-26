@@ -1,0 +1,88 @@
+{% extends 'home.html' %}
+
+
+{%load static%}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-6">
+    
+
+        <div class="card card-body">
+            <h5>Customer Details </h5>
+        </div>
+
+        <div class="col card card-body">
+           
+              <p>      Name<span style="padding-left: 20px;">{{request.user.customer.name}}</span></p>
+              <p>      Phone<span style="padding-left: 20px;">{{request.user.customer.phone}}</span></p>
+                <p>     Email<span style="padding-left: 20px;">{{request.user.customer.email}}</span></p>
+
+             
+      
+     {%for i in ship_address%}
+     <p>select Address <input type="checkbox" name="player_check"  {% if i.player_check %}  value='{{i}}' {% endif %} id="cA" >
+        
+
+    </p>
+    <script>
+        selected_values = request.POST.getlist('i')
+        localStorage.setItem('objectToPass', selected_values);
+    </script>
+
+     <p>Name<span  style="padding-left: 20px;">{{i.customer.name}}</span></p>
+
+     <p>Address<span  style="padding-left: 20px;">{{i.street_address}}</span></p>
+     <p>City<span style="padding-left: 20px;"> {{i.city}}</span></p>
+     <p>State <span style="padding-left: 20px;">{{i.state}}</span></p>
+     <p> Zipcode<span style="padding-left: 20px;">{{i.zipcode}}</span></p>
+    
+      
+    
+      
+  {%endfor%}
+
+</div>
+        </div>
+        
+   
+
+
+    <div class="col-6">
+   
+
+        <div class="card card-body">
+            <h5>Orders</h5>
+        </div>
+
+        <div class="card card-body">
+           <table><tr>
+            <td><label>      No of items</label></td><td><span style="padding-left: 20px;">{{cart.num_of_items}}</span></p></td></tr>
+            <td>  <label>    Total price</label></td><td> <span style="padding-left: 20px;">{{cart.total_price}}</span></p></td></tr>
+              <td>  <label>   tax</label></td><td><span style="padding-left: 20px;">{{tax}}</span></p></td></tr>
+                  <td> <label> total amount to pay</label></td><td><span style="padding-left: 20px;">{{cart.total_afterTax}}</span></p></td></tr>
+                  
+            
+            </table>
+            <h4>Select Payment options</h4>
+         
+            <input class="btn btn-primary" type="submit" name="Update Information" value="Place Order" onClick="myFunction()">
+          
+    <script>
+      function myFunction() {
+        window.location.href="{% url 'create_order' %}";
+      }
+    </script>
+            <!-- <a href="{% url 'create_order' %}">Place Order</a> -->
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+

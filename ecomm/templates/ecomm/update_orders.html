@@ -1,0 +1,65 @@
+{% extends 'home.html' %}
+
+
+{% block content %}
+<div class="row" >
+    <div class="card card-body text-center">
+        <h5 class="btn-block">ORDERS</h5>
+    </div>
+</div> 
+<div class="row">
+   
+
+    <div class="col-6 card" id="file">  
+
+    
+  
+    <label style="padding-right: 20px;"> Transaction ID </label>  <p class="card">  {{order.transaction_id}}</p>
+    <label style="padding-right: 20px;"> order number </label>    <p class="card"> {{order.id}}</p>
+    <label style="padding-right: 20px;"> customer name</label>   <p class="card">  {{order.customer.name}}</p>
+    <label style="padding-right: 20px;">customer address</label>  <p data-address="iAdd" class="card"> 
+
+        
+        {{order.ship_address}}
+        {{order.ship_address.state}}
+        {{order.ship_address.city}}
+        {{order.ship_address.zipcode}}
+        <script>
+            // in the second page on load
+            localStorage.getItem('objectToPass');
+           </script>
+    </p>
+    <label style="padding-right: 20px;"> total items</label>   <p class="card">  {{cart.num_of_items}}</p>
+    <label style="padding-right: 20px;"> total amount  paid</label>  <p class="card"> {{cart.total_afterTax}}</p>
+     
+    <hr>
+    
+</div></a>
+<div class="col-6 card">
+Your order status will be updated soon 
+Thank you for placing order with us..
+
+download invoice here
+
+
+<button id='btnPrint' class="btn btn-primary" >Download the Invoice</button>
+
+       
+</div>    
+        
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $("#btnPrint").live("click", function () {
+        var divContents = $("#file").html();
+        var printWindow = window.open('', '', 'height=400,width=800');
+        printWindow.document.write('<html><head><title>DIV Contents</title>');
+        printWindow.document.write('</head><body >');
+        printWindow.document.write(divContents);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    });
+</script>
+
+{% endblock %}

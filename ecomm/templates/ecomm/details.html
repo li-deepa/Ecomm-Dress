@@ -1,0 +1,29 @@
+{% extends 'home.html'%}
+{% block content %}
+<ol>
+  <li><div class="product-container row " >
+ 
+    <div class="col-6 card" >
+      
+        
+      <img   src="{{product.imageURL}}" width="100%" height="100%">
+    </div>
+
+  
+  <div class="col-6 card" style="background-color:turquoise;" >
+   
+      <h1>Id -{{ product.id }}</h1>
+    <h3>name- {{ product.product_name }} </h3>
+    <p> {{ product.description }} </p>
+    <p> {{ product.price }} </p>
+    <button class="add-cart btn-md btn-primary product-container" data-product="{{product.id}}" data-action="add" >Add to cart</button>
+    <br>
+    <button class="btn-lg btn-warning" type="submit">Place Order</button>
+    <br>
+    {%if user.is_admin %}
+<a href="{% url 'update' product.id %}" class="btn-lg btn-info">Update</a>
+{%endif%}
+</div>
+</div>
+</div></li></ol>
+{% endblock %}

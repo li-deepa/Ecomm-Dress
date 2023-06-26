@@ -1,0 +1,101 @@
+{% extends 'home.html'%}
+{% block content %}
+<table>
+  <tr>
+  <div class="row " >
+   
+
+    <div class="col-4 card" >
+    Product details</div>
+      <div class="col-2 card" >
+      Product description</div>
+      <div class="col-2 card" >
+      Product quantity</div>
+      <div class="col-2 card" >
+        product price
+      </div>
+      <div class="col-2 card" >
+        product price * quantity
+      </div>
+    </div>
+  </tr>
+{%for item in items%}
+
+  <tr>
+
+<div class="row">
+   
+
+  <div class="col-2 card" style="width:100px;height:100px">
+    
+      
+        <a href='{{item.product.get_absolute_url}}'>
+            <img  src="{{item.product.imageURL}}" width="100px" height="100px">
+           </a>
+           
+ 
+   </div>
+   <div class="col-2 card" style="background-color:grey;width:100px;height:100px;text-align: center;">
+   <br>
+    <h6>Id -{{ item.product.id }}</h6>
+    <h6>name- {{ item.product.product_name }} </h6>
+  </div>
+  
+<div class="col-2 card"  style="background-color:grey;width:100px;height:100px;text-align: center;">
+  
+  <!-- <img  data-product={{item.product.id}} data-action="add" class="chg-quantity product-container" src='images/plus.png' width="15px" height="15px"> -->
+
+<p class="quantity">x{{item.quantity}}</p>
+
+    <!-- <img   data-product={{item.product.id}} data-action="remove" class="chg-quantity product-container" src='images/minus.png' width="15px" height="15px">  -->
+</div>
+ <div class="col-2 card"  style="background-color:grey;width:100px;height:100px;text-align: center;">
+<br>
+      <h6>{{ item.product.price }} <span>$</span></h6> 
+    </div>
+      <div class="col-2 card" style="background-color:grey;width:100px;height:100px;text-align: center;">
+<br>
+      <h6>{{ item.item_price }} <span>$</span></h6>  
+     </div>
+     
+     <div class="col-2 card"  style="background-color:grey;width:100px;height:100px">
+        <br>
+        <h6>    {{form.status}}
+        </h6>
+      
+        
+    
+    </div>
+</div>
+</div>
+      
+    
+</div> 
+
+</tr>
+ 
+
+{%endfor%}
+<tr>
+  <div class="row">
+    <div class="col-4 card" >
+      </div>
+        <div class="col-4 card" style="text-align: center;" >
+          <h3> total quantity -  {{cart.num_of_items}}</h3></div>
+        <div class="col-4 card" style="text-align: center;" >
+          <h3>total price -  {{ cart.total_price }}<span>$</span></h3>
+        </div>
+   
+    
+</div>
+
+
+</tr>
+<tr>
+  
+    <a class="btn-lg btn-primary" type="submit"  href="{% url 'orders'  %}">Update Order by Admin</a>
+</tr>
+</table>
+
+
+{%endblock%}

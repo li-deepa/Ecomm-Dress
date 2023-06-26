@@ -1,0 +1,49 @@
+{%extends 'home.html'%}
+{%load static%}
+
+{%block content%}
+<br>
+<div class="row card">
+   
+
+    <div class="card col-12">
+        <div class="card-body">
+            {% for obj in product %}
+            <a href='{{obj.get_absolute_url}}'>
+                <img class="mySlides"  src='{{obj.imageURL}}' width="1000px" height="1000px">
+               </a>            {%endfor%}
+            <div>
+   
+   </div>
+   
+   
+    </div>
+<script>
+var slideIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > x.length) {slideIndex = 1}
+  x[slideIndex-1].style.display = "block";
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+
+</script>
+
+
+<!-- <div id="footer">
+<a href ="index.html"> Home</a>&nbsp;&nbsp;
+<a href ="gallery.html"> Gallery</a>&nbsp;&nbsp;
+<a href ="events.html">Events</a>&nbsp;&nbsp;
+<a href ="newcontact.html"> Contact</a>&nbsp;&nbsp;
+</div> -->
+
+
+
+{%endblock%}

@@ -1,0 +1,110 @@
+{% extends 'home.html' %}
+
+
+{% block content %}
+
+<hr>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>{{request.user.username.upper}} Profile</h5>
+        </div> 
+        
+        <div class="card card-body">
+          <table class="table table-sm">
+                <tr>
+                    
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>email</th>
+                  
+                    <th>Edit profile</th>
+                    <th>create order</th>
+                    <!-- <th>Orders</th> -->
+                </tr>
+               
+                <tr>
+                    <form method="post" action="" enctype="multipart/form-data">
+
+                        {% csrf_token%}
+                
+                        <td>  {{form.name}} </td>
+                        <td>  {{form.phone}} </td>
+                        <td>  {{form.email}} </td>
+
+                        <td>   <input  class="btn btn-primary" type="submit" name="Update Information" value="Edit"></td>
+                
+                
+                   </form>
+                
+                   
+                    
+                    <td><a class="btn btn-sm btn-info" href="{% url 'create_address' %}">ADD Address</a></td>
+
+
+                </tr>
+               <tr>
+
+               
+               </tr>
+            </table>
+            <h4><centre>Addresses</centre></h4>
+
+            <div class="row">
+                 
+                {% for i in ship_address %}
+
+                {% if request.user.customer == i.customer %}
+
+       
+
+                <div class="card-deck col-4">
+                  <div class="card card-body">
+                   
+                 
+            
+                 <p>Address<h6  style="padding-left: 20px;">{{i.street_address}}</h6></p>
+                 <p><h6 style="padding-left: 20px;"> {{i.city}}</h6></p>
+                 <p> <h6 style="padding-left: 20px;">{{i.state}}</h6></p>
+                 <p> <h6 style="padding-left: 20px;">{{i.zipcode}}</h6></p>
+              
+                  <div class="card-footer">
+                    <a href="{%url 'update_address' i.id%}" class="btn btn-primary">update </a>
+                    
+                    <a href="{%url 'delete_address' i.id%}" class="btn btn-danger">delete </a>
+
+                  </div>
+                </div>
+
+                
+            </div>
+              <br>
+              {%endif%}
+           
+              {%endfor%}
+            </div>
+        </div>
+    </div>
+    </div>
+    
+   
+    <div class="card card-body text-center">
+        <h5 class="btn-block">ORDERS</h5>
+    </div>
+   
+    {% include 'ecomm/status.html' %}
+    
+
+<div class="row">
+   
+
+
+
+</div>
+
+
+
+</div>
+
+
+{% endblock %}

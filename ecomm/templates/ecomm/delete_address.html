@@ -1,0 +1,36 @@
+{% extends 'home.html'%}
+{% block content %}
+<form method="post" action="{% url 'delete_address' ship_address.id %} ">
+    {% csrf_token %}
+
+    <h1> do you want to delete the {{ship_address.customer.name}} address ?</h1>
+    <div class="card">
+      <div class="card-body">
+       
+          <p>Name<span class="card" style="padding-left: 20px;"> <a href='{{i.get_absolute_url}}'>{{ship_address.customer.name}}</a></span></p>
+     
+
+     <p>Address<span class="card" style="padding-left: 20px;">{{ship_address.street_address}}</span></p>
+     <p>City<span class="card"style="padding-left: 20px;"> {{ship_address.city}}</span></p>
+     <p>State <span class="card"style="padding-left: 20px;">{{ship_address.state}}</span></p>
+     <p> Zipcode<span class="card"style="padding-left: 20px;">{{ship_address.zipcode}}</span></p>
+     <p>Date_added<span class="card"style="padding-left: 20px;">{{ship_address.date_added}}</span></p>
+  
+      <div class="card-footer">
+        <input type="submit" class="btn btn-sm btn-warning" name="submit">
+        <a  href="{% url 'profile'%}" class="btn btn-sm btn-success" >Cancel</a>
+    
+      </div>
+    </div>
+    
+    
+  </div>
+  <br>
+   
+</form>
+    <!-- {% if request.user.customer == ship_address.customer %} -->
+  
+    
+  <!-- {%endif%} -->
+
+{%endblock%}

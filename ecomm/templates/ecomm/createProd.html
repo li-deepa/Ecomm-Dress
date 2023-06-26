@@ -1,0 +1,31 @@
+{% extends 'home.html'%}
+{% block content %}
+<div >
+      <div class="col-10" style="background-color:black;color:white;">
+        <br>
+        <form action='' method="POST"  enctype="multipart/form-data" >
+            {% csrf_token %}
+          <br>
+          <label>Product Name</label> <p id ="">  {{ form.product_name}} </p>
+  
+          
+            
+            
+            <label> CONTENT</label><p id ="" style="width:100%;"> {{ form.description}}</p>
+           
+                <label>PRICE</label><p id ="">   {{ form.price}}  </p>
+         
+                {{ form.image}}
+         
+          
+        
+          <button type="submit"  class="btn btn-warning" >Save</button>
+          <a href="{% url 'products' %}" class="btn btn-info">Cancel</a>
+                </form>
+   <br><br>
+      </div>
+        
+  
+    </div>
+
+{% endblock %}

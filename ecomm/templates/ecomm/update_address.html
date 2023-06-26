@@ -1,0 +1,24 @@
+{% extends 'home.html'%}
+{% block content %}
+<form method="post" action=" ">
+    {% csrf_token %}
+
+    <h1> do you want to update {{request.user.customer.name}} address ?</h1>
+{{form.as_p}}
+    <input type="submit" class="btn btn-md btn-warning" name="submit">
+    <button type="submit" href="{% url 'products'%}">Cancel</button>
+
+</form>
+    <!-- {% if request.user.customer == ship_address.customer %} -->
+  
+         <div class="card-footer">
+       
+      </div>
+    </div>
+    
+
+  </div>
+  <br>
+  <!-- {%endif%} -->
+
+{%endblock%}

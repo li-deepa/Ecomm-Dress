@@ -17,11 +17,11 @@ here is a brief view of project
 
 
   <h3>Description</h3>
-  An Ecommere store designed with basic functionalities 
-  user register and log in to the page
-  select products and add to cart
-  Add address details and contact information
-  and place order and pay for the items and
-  download invoice details
+  <ol><p>An Ecommere store designed with basic functionalities </p>
+<li>  user register and log in to the page</li>
+<li>  select products and add to cart</li>
+<li> Add address details and contact information</li> 
+<li>  place order and pay for the items </li> 
+<li>  download invoice details</li></ol>
   
 </div>
